@@ -37,6 +37,15 @@ st.write('You Enterted the stock symbol: ', tic)
 string_logo = '<img src=%s>' % tickerData.info['logo_url']
 st.markdown(string_logo, unsafe_allow_html=True)
 
+#Company info
+if st.checkbox('Company Information Summery'):
+   
+   string_summary = tickerData.info['longBusinessSummary']
+   st.info(string_summary)
+   
+
+
+
 #st_date= st.("Enter Starting date as YYYY-MM-DD", "2020-01-10")
 
 st_date = st.date_input("Start date", dt.date(2019, 1, 1))
@@ -69,7 +78,7 @@ st.title('Exponential Moving Averages :chart:')
 '---------------------------------------------------------'
 'Stock Data Based on Exponential Moving Averages Strategy'
 'An Exponential Moving Average (EMA) is a stock indicator that is commonly used in technical analysis.'
-st.write("You can read more about EMA strategies in my [Medium Article link](https://arielmadjar.medium.com/understanding-stock-trading-strategies-using-python-285e5069ba3e)")
+#st.write("You can read more about EMA strategies in my [Medium Article link](https://arielmadjar.medium.com/understanding-stock-trading-strategies-using-python-285e5069ba3e)")
 st.write("For The ** Golden Cross Strategy ** use Short EMA: **50** Long EMA:** 200 **")
 ShortEMA= st.text_input("Enter number of days Short Exponential Moving Average:", "9")
 
@@ -83,7 +92,7 @@ df["ShortEMA"] =ColShortEMA
 
 'Plot of Stock Closing Value for '+ ShortEMA+ " Days of Short Exponential Moving Average"
 'And ' +LongEMA+ ' Days of Long Exponential Moving Average'
-'   Actual Closing Value also Present'
+#'   Actual Closing Value also Present'
 
 ColLongEMA = df.Close.ewm(span=int(LongEMA),adjust=False).mean()
 df["LongEMA"] =ColLongEMA
@@ -194,10 +203,3 @@ elif strg_name=="Complex View":
   st.plotly_chart(fig)
   #qf.iplot()
 
-
-
-
-
-  
-
-  
